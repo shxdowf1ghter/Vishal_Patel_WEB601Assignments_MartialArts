@@ -1,0 +1,21 @@
+<input [(ngModel)]="searchTitle" placeholder="Enter Content Title">
+<button (click)="searchContent()">Search</button>
+
+<p [style.color]="foundContent ? 'green' : 'red'">
+  {{ foundContent ? 'Content item exists' : 'Content item does not exist' }}
+</p>
+
+<h2>No Type</h2>
+<div *ngFor="let content of contentArray | typeFilter: ''">
+  <app-content-card [content]="content" [class.type]="content.type === 'type'" ></app-content-card>
+</div>
+
+<h2>Type 1</h2>
+<div *ngFor="let content of contentArray | typeFilter: 'type'">
+  <app-content-card [content]="content" [class.type]="content.type === 'type'" ></app-content-card>
+</div>
+
+<h2>Type 2</h2>
+<div *ngFor="let content of contentArray | typeFilter: 'tags'">
+  <app-content-card [content]="content" [class.type]="content.type === 'type'" ></app-content-card>
+</div>
